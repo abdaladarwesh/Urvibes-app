@@ -8,8 +8,8 @@ type props = {
 
 const Topbar = ({img} : props) => {
   return (
-    <div className="flex fixed top-0 w-full justify-end items-center mt-7 px-7 gap-6 z-20">
-      <h1 className="text-2xl text-white mr-auto ml-20 font-outfit whitespace-nowrap">
+    <div className="flex top-0 w-full justify-end items-center mt-7 px-7 gap-6 z-20">
+      <h1 className="text-2xl text-white mr-auto ml-5 font-outfit whitespace-nowrap">
         Hello Sir!
       </h1>
 
