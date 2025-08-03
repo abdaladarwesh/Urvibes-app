@@ -8,7 +8,7 @@ import Falldown from "../Animations/Falldown";
 const Dashboard: FC = () => {
     return (
         <div className="bg-gray-900 h-screen w-screen flex">
-            <Falldown ClassName="bg-gray-900 h-screen w-screen flex" duration={1} y={-200}>
+            <Falldown ClassName="bg-gray-900 h-screen w-screen flex" duration={5} y={-20}>
                     <Topbar/>
                     <Sidebar/>
             </Falldown>
