@@ -29,9 +29,15 @@ export default function Stock () : ReactNode{
     return (
         <div className="flex flex-col bg-gray-800 h-full w-full mt-10 rounded-2xl p-2">
             <div className="flex relative flex-row justify-between items-center mt-3 mb-10 mx-5">
-                <p className="text-white">New Products</p>
+                {/* <p className="text-white">New Products</p> */}
+                <div className="h-10 w-30 bg-purple-400/40 rounded flex justify-center items-center">
+                    <p className="text-sm font-outfit font-medium text-purple-400">New Products</p>
+                </div>
                 <div className="flex flex-col relative">
-                    <p className="text-white cursor-pointer hover:bg-gray-700 p-2 rounded transform transition-all duration-200 ease-in-out" onClick={() => Setopened(!opened)}>Filter by </p>
+                    <p className="text-white cursor-pointer
+                    hover:bg-gray-700 p-2 rounded transform 
+                    transition-all duration-200 ease-in-out" 
+                    onClick={() => Setopened(!opened)}>Filter by </p>
                     {
                         opened && 
                         <div className="absolute z-100 h-fit w-25 bg-gray-500/95 p-2 gap-y-1 flex flex-col rounded-lg my-10 right-0.5">
@@ -84,7 +90,6 @@ export default function Stock () : ReactNode{
                         <Card key={i} img={p.image} rate={p.rating.rate} name={p.title} cost={p.price} cat={p.category} count={p.rating.count} />
                     );
                 })
-
             }
         </div>
     );

@@ -36,7 +36,7 @@ const Sidebar : FC = () => {
                                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
                                     />
                                 }
-                                <Link to={"/"} onClick={() => setSelectedIcon(id)}>
+                                <Link to={id === 2 ? "/analytics" : "/"} onClick={() => setSelectedIcon(id)}>
                                     <FontAwesomeIcon icon={icon} className="text-white cursor-pointer" />
                                 </Link>
                             </div>

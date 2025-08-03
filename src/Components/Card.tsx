@@ -13,7 +13,7 @@ type props = {
 export default function Card({ img , name , cost , cat , count, rate} : props) : ReactNode {
 
     return (
-        <div className="w-full bg-gray-600 rounded-2xl p-3 flex items-start flex-row mb-5">
+        <div className="w-full bg-gray-600 rounded-2xl p-3 flex items-center flex-row mb-5">
             <div className="size-13 bg-gray-900 rounded-xl p-1 flex-shrink-0">
                 <img src={img} alt="Product" className="size-full object-contain" />
             </div>
@@ -32,7 +32,7 @@ export default function Card({ img , name , cost , cat , count, rate} : props) :
                     <p className="text-white">Sold out</p>
                 </div> 
                 :
-                <div className="w-18 h-7 bg-green-400 ml-auto rounded-md flex justify-center items-center flex-shrink-0">
+                <div className="w-18 h-7 bg-green-400/50 ml-auto rounded-md flex justify-center items-center flex-shrink-0">
                     <p className="text-white">in stock</p>
                 </div>
             }
