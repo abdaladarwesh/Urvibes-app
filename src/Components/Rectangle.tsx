@@ -44,7 +44,6 @@ export default function Reactangle () : ReactNode {
                 <div className="mb-7 w-80 bg-white/50 ml-auto rounded-xl mr-12 mt-7 flex justify-center items-center p-2">
                     <img src={photo} alt="Product" className="size-full object-contain" />
                 </div>
-
             </div>
         </div>
     );
