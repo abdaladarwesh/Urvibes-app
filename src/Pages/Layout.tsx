@@ -1,4 +1,3 @@
-// Layout.tsx
 import { Outlet } from "react-router-dom";
 import Sidebar  from "../Components/Sidebar";
 
@@ -10,3 +9,4 @@ export const Layout = () => (
     </div>
   </div>
 );
+

@@ -1,12 +1,17 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBell} from "@fortawesome/free-regular-svg-icons"
+import { useState, type ChangeEvent } from "react";
+import { motion } from "framer-motion";
 
 type props = {
   img? : string
 }
 
 const Topbar = ({img} : props) => {
+
+  const [input , SetInput] = useState<string>("");
+
   return (
     <div className="flex top-0 w-full justify-end items-center mt-7 px-7 gap-6 z-20">
       <h1 className="text-2xl text-white mr-auto ml-5 font-outfit whitespace-nowrap">
@@ -16,10 +21,30 @@ const Topbar = ({img} : props) => {
       <div className="relative w-75">
         <input
           type="text"
+          value={input}
+          onChange={(e : ChangeEvent<HTMLInputElement>) => {SetInput(e.currentTarget.value)}}
           placeholder="Search..."
           aria-label="Search"
           className="w-full pl-10 pr-4 py-2 rounded-4xl bg-gray-700/90 text-white placeholder-gray-500 focus:outline-none placeholder:text-sm"
         />
+          {
+            input &&
+            <motion.div
+                initial={{ y: -10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute w-[257px] h-20 bg-gray-500/70 left-8 top-15 p-2 rounded"
+            >
+              <motion.div
+               className="text-center text-white bg-gray-700/70 rounded p-2"
+                key={input}
+                initial={{ y: -10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+               >{input}</motion.div>
+            </motion.div>
+
+          }
         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </span>

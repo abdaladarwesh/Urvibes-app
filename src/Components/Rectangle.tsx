@@ -33,7 +33,7 @@ export default function Reactangle () : ReactNode {
                         <p className="text-sm font-outfit font-medium text-purple-400">New Item</p>
                     </div>
                     <p className="text-white ml-7 mt-5 text-4xl font-outfit">A new item in stock!</p>
-                    <p className="text-white ml-7 mt-5 text-2xl font-outfit">Go to <Link to={"/"} className="text-purple-400 text-bold">analysis</Link> to know more</p>
+                    <p className="text-white ml-7 mt-5 text-2xl font-outfit">Go to <Link to={"/analytics"} className="text-purple-400 text-bold">analysis</Link> to know more</p>
                     <div className="relative w-70 ml-7 mt-auto mb-6 flex flex-row items-center">
                         <div className="size-10 bg-purple-400 rounded-full flex justify-center items-center cursor-pointer">
                             <FontAwesomeIcon icon={faPlay}/>
