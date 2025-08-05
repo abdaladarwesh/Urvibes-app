@@ -10,19 +10,18 @@ enum Filter {
     STOCK
 }
 
-export default function Stock () : ReactNode{
+export default function Stock ({products} : {products : product[]}) : ReactNode{
     
     const [opened, Setopened] = useState<boolean>(false);
 
     const [Selectedfilter , setSelectedfilter] = useState<Filter>(Filter.NONE);
     
-    const [dataList, setDataList] = useState<product[]>([]);
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-        .then(async (res) => {
-            setDataList(await res.json());
-        })
-    }, [])
+    // const [products, setDataList] = useState<product[]>([]);
+    // useEffect(() => {
+    //     fetch("https://fakestoreapi.com/products")
+    //     .then(res => res.json())
+    //     .then(pro => setDataList(pro))
+    // }, [])
 
     const containerRef = useRef<HTMLDivElement | null>(null);
     const toggleRef = useRef<HTMLDivElement | null>(null);
@@ -91,27 +90,27 @@ export default function Stock () : ReactNode{
             </div>
             {
                 Selectedfilter == Filter.NONE ?
-                dataList!.slice(0, 6).map((p, i) => {
+                products!.slice(0, 6).map((p, i) => {
                     return(
                         <Card key={i} img={p.image} rate={p.rating.rate} name={p.title} cost={p.price} cat={p.category} count={p.rating.count}/>                    
                     );
                 }) 
                 :
                 Selectedfilter == Filter.PRICE ? 
-                dataList!.sort((a, b) => b.price - a.price).slice(0, 6).map((p, i) => {
+                products!.sort((a, b) => b.price - a.price).slice(0, 6).map((p, i) => {
                     return (
                         <Card key={i} img={p.image} rate={p.rating.rate} name={p.title} cost={p.price} cat={p.category} count={p.rating.count} />
                     );
                 })
                 :
                 Selectedfilter == Filter.RATING ?
-                dataList!.sort((a, b) => b.rating.rate - a.rating.rate).slice(0, 6).map((p, i) => {
+                products!.sort((a, b) => b.rating.rate - a.rating.rate).slice(0, 6).map((p, i) => {
                     return (
                         <Card key={i} img={p.image} rate={p.rating.rate} name={p.title} cost={p.price} cat={p.category} count={p.rating.count} />
                     );
                 })
                 :
-                dataList!.sort((a, b) => b.rating.count - a.rating.count).slice(0, 6).map((p, i) => {
+                products!.sort((a, b) => b.rating.count - a.rating.count).slice(0, 6).map((p, i) => {
                     return (
                         <Card key={i} img={p.image} rate={p.rating.rate} name={p.title} cost={p.price} cat={p.category} count={p.rating.count} />
                     );

@@ -6,7 +6,6 @@ import Topbar from "../Components/Topbar";
 export default function Analaytics () : ReactNode {
 
 
-
     return (
         <div className="bg-gray-900 h-screen w-screen flex overflow-y-auto scroll-auto flex-col">
             <Topbar/>
