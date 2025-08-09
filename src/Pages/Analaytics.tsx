@@ -1,36 +1,53 @@
-import { type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Falldown from "../Animations/Falldown";
 import Topbar from "../Components/Topbar";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+import type { product } from "@/Components/Rectangle";
+import Chart from "@/Components/Chart";
+
 
 
 export default function Analaytics () : ReactNode {
 
+    const [data, Setdata] = useState<product[]>([]);
+    useEffect(() => {
+        fetch("https://fakestoreapi.com/products")
+        .then(res => res.json())
+        .then(data => Setdata(data))
+        Setdata(data => data?.slice(0,7))
+    }, [])
+
 
     return (
-        <div className="bg-gray-900 h-screen w-screen flex overflow-y-auto scroll-auto flex-col">
+        <div className="bg-gray-900 h-screen w-full flex overflow-y-auto scroll-auto flex-col">
             <Topbar/>
             <Falldown ClassName="bg-gray-900 h-screen w-screen flex flex-col overflow-y-auto" duration={5} y={-20}>
-                <div className="flex gap-20 ml-20 flex-row mt-10">
-                    <Card NameTop={"5.5 M"} NameDown={"Profit"} />
-                    <Card NameTop={"1025 K"} NameDown={"Total Stock"} />
-                    <Card NameTop={"1.5 K"} NameDown={"Loss"} />
-                    <Card NameTop={"1.2 M"} NameDown={"Customers"} />
-                    <Card NameTop={"5.5 M"} NameDown={"Profit"} />
-                </div>
+                {/* <Card c>
+                    <CardHeader>
+                        Profit
+                    </CardHeader>
+                </Card> */}
+                <Card className="max-w-full w-[500px] h-[440px] bg-[#171717] rounded-2xl m-2 ml-10 mt-10 hover-lift">
+                    <CardHeader>
+                        <CardTitle className="text-white">Sales</CardTitle>
+                        <CardDescription>
+                        Showing total Sales for the newest products
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="pb-10">
+                        <Chart data={data!}/>
+                    </CardContent>
+                </Card>
             </Falldown>
         </div>
 
     );
-
-    function Card({NameTop , NameDown} : { NameTop : string, NameDown : string}) {
-      return (
-    <div className="
-        w-40 h-25 hover-lift border-purple-400/30 border-2 bg-gradient-to-r
-        from-[#4c2080] to-[#7729a7] rounded flex flex-col
-        justify-center items-center shadow-2xl">
-        <p className="text-white text-xl font-bold">{NameTop}</p>
-        <p className="text-white text-sm">{NameDown}</p>
-    </div>
-        );
-    }
-  }
+}

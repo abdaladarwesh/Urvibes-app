@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Card from "./Card";
 import type { product } from "./Rectangle";
+import { ChevronDown } from "lucide-react";
 
 
 enum Filter {
@@ -54,11 +55,17 @@ export default function Stock ({products} : {products : product[]}) : ReactNode{
                     <p className="text-sm font-outfit font-medium text-white">New Products</p>
                 </div>
                 <div className="flex flex-col relative bg-gray-400/40 rounded w-30 justify-center items-center" ref={toggleRef}>
-                    <p className="text-white cursor-pointer
-                    hover:bg-gray-700 p-2 rounded transform 
-                    transition-all duration-200 ease-in-out w-full text-center" 
-                    ref={toggleRef}
-                    onClick={() => Setopened(!opened)}>Filter by </p>
+                    <div className="text-white cursor-pointer
+                        hover:bg-gray-700 px-4 py-2 rounded transform 
+                        transition-all duration-200 ease-in-out w-full text-center flex flex-row items-center justify-between"
+                        ref={toggleRef}
+                        onClick={() => Setopened(!opened)}
+                        >
+                        <p
+                        ref={toggleRef}
+                        onClick={() => Setopened(!opened)}>Filter by </p>
+                        <ChevronDown />
+                    </div>
                     {
                         opened && 
                         <div className="absolute z-100 h-fit w-25 bg-gray-500/95 p-2 gap-y-1 flex flex-col rounded-lg my-10 right-2 top-2" 

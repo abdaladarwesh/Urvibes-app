@@ -1,4 +1,6 @@
+import { Badge } from "@/components/ui/badge";
 import type { ReactNode } from "react";
+import { ArrowUp01, CircleDollarSign, PackageOpen, Star } from "lucide-react";
 
 
 type props = {
@@ -19,11 +21,35 @@ export default function Card({ img , name , cost , cat , count, rate} : props) :
             </div>
             <div className="flex flex-col flex-grow min-w-0 ml-2">
                 <p className="ml-2 text-white text-lg break-words">{name}</p>
-                <div className="flex flex-row">
-                    <p className="ml-2 text-white text-sm font-bold mx-2">Cost    <span className="text-gray-400 ml-1">{cost}$</span></p>
-                    <p className="ml-2 text-white text-sm font-bold mx-2">Category   	 <span className="text-gray-400 ml-1">{cat}</span></p>
-                    <p className="ml-2 text-white text-sm font-bold mx-2">Rating   	 <span className="text-gray-400 ml-1">{rate}</span></p>
-                    <p className="ml-2 text-white text-sm font-bold mx-2">Count   	 <span className="text-gray-400 ml-1">{count}</span></p>
+                <div className="flex flex-row m-1 gap-3">
+                    <Badge
+                        variant="secondary"
+                        className="bg-gray-500 text-white dark:bg-blue-600 font-bold"
+                    >
+                        <CircleDollarSign size={50} color="white"/>
+                        Cost <span className="text-gray-200 ml-1">{cost}</span>
+                    </Badge>
+                    <Badge
+                        variant="secondary"
+                        className="bg-gray-500 text-white dark:bg-blue-600 font-bold"
+                    >
+                        <PackageOpen size={50} color="white"/>
+                        Category <span className="text-gray-200 ml-1">{cat}</span>
+                    </Badge>
+                    <Badge
+                        variant="secondary"
+                        className="bg-gray-500 text-white dark:bg-blue-600 font-bold"
+                    >
+                        <Star size={50} color="white"/>
+                        Rating <span className="text-gray-200 ml-1">{rate}</span>
+                    </Badge>
+                    <Badge
+                        variant="secondary"
+                        className="bg-gray-500 text-white dark:bg-blue-600 font-bold"
+                    >
+                        <ArrowUp01 size={50} color="white"/>
+                        Quantity <span className="text-gray-200 ml-1">{count}</span>
+                    </Badge>
                 </div>
             </div>
             {

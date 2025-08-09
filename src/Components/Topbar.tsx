@@ -47,11 +47,14 @@ const Topbar = ({img, input, SetInput, products} : props) => {
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
               {
+                products.length === 0 ?
                 products!.slice(0, 4).map((p, i) => {
                   return(
                       <Card key={i} img={p.image} rate={p.rating.rate} name={p.title} cost={p.price} cat={p.category} count={p.rating.count}/>                    
                     );
                 }) 
+                :
+                <Card name={"Item not found"}/>
                }
                </motion.div>
             </motion.div>
@@ -121,12 +124,12 @@ const Topbar = ({img, input, SetInput, products} : props) => {
 
 export default Topbar;
 type Cprops = {
-    img : string,
-    name : string,
-    cost : number,
-    cat : string,
-    count : number,
-    rate : number,
+    img? : string,
+    name? : string,
+    cost? : number,
+    cat? : string,
+    count? : number,
+    rate? : number,
 }
 
 function Card({ img , name } : Cprops) : ReactNode {
@@ -136,7 +139,7 @@ function Card({ img , name } : Cprops) : ReactNode {
         <div className="size-13 bg-gray-900 rounded-xl p-1 flex-shrink-0 m-2 flex-row">
             <img src={img} alt="Product" className="size-full object-contain" />
         </div>
-        <p>{name.slice(0, 20)} ...</p>
+        <p>{name!.slice(0, 20)} ...</p>
       </div>
     );
 }
